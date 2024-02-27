@@ -4,9 +4,8 @@ import User from "./User";
 import classes from "./Users.module.css";
 
 class Users extends Component {
-
-  componentWillUnmount(){
-    console.log('user will unmount');
+  componentWillUnmount() {
+    console.log("user will unmount");
   }
 
   constructor() {
@@ -16,6 +15,13 @@ class Users extends Component {
       more: "test",
     };
   }
+
+  componentDidUpdate() {
+    if (this.props.users.length === 0) {
+      throw new Error("no users provided");
+    }
+  }
+  
   toggleUsersHandler() {
     //this.state.showUsers = false //NOT do this
     this.setState((curState) => {
